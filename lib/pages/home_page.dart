@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:the_cat_api/models/cat_model.dart';
 import 'package:the_cat_api/pages/search_page.dart';
 import 'package:the_cat_api/pages/upload_page.dart';
+import 'package:the_cat_api/pages/view_image.dart';
 import 'package:the_cat_api/services/grid_view_service.dart';
 import 'package:the_cat_api/services/http_service.dart';
 
@@ -138,7 +139,27 @@ class _HomePageState extends State<HomePage> {
                       crossAxisSpacing: 5,
                       itemCount: cats.length,
                       itemBuilder: (context, index) {
-                        return GridWidget(cat: cats[index]);
+                        return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  PageRouteBuilder(
+                                      pageBuilder: (context, animation, anim) =>
+                                          ViewImage(
+                                              url: cats[index].url,
+                                              idImage: index),
+                                      transitionDuration:
+                                          const Duration(milliseconds: 400),
+                                      transitionsBuilder:
+                                          (context, anim1, anim2, child) {
+                                        return FadeTransition(
+                                            opacity: anim1, child: child);
+                                      },
+                                      fullscreenDialog: true));
+                            },
+                            child: Hero(
+                                tag: '$index',
+                                child: GridWidget(cat: cats[index])));
                       }),
                 )),
                 isLoadPage

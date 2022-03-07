@@ -4,6 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:the_cat_api/models/uploads_model.dart';
+import 'package:the_cat_api/pages/view_image.dart';
 import 'package:the_cat_api/services/grid_view_service.dart';
 import 'package:the_cat_api/services/http_service.dart';
 
@@ -189,10 +190,32 @@ class _UploadPageState extends State<UploadPage> {
                       crossAxisSpacing: 5,
                       itemCount: uploads.length,
                       itemBuilder: (context, index) {
-                        return GridWidget(
-                          upload: uploads[index],
-                          update: _update,
-                          list: uploads,
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                PageRouteBuilder(
+                                    pageBuilder: (context, animation, anim) =>
+                                        ViewImage(
+                                            url: uploads[index].url,
+                                            idImage: index),
+                                    transitionDuration:
+                                        const Duration(milliseconds: 400),
+                                    transitionsBuilder:
+                                        (context, anim1, anim2, child) {
+                                      return FadeTransition(
+                                          opacity: anim1, child: child);
+                                    },
+                                    fullscreenDialog: true));
+                          },
+                          child: Hero(
+                            tag: "$index",
+                            child: GridWidget(
+                              upload: uploads[index],
+                              update: _update,
+                              list: uploads,
+                            ),
+                          ),
                         );
                       })
                   : Center(

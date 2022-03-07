@@ -41,7 +41,7 @@ class Uploads {
         url: json["url"],
         width: json["width"],
         height: json["height"],
-        subId: json["sub_id"],
+        subId: json["sub_id"]??"",
         createdAt: DateTime.parse(json["created_at"]),
         originalFilename: json["original_filename"],
         breedIds: json["breed_ids"],
