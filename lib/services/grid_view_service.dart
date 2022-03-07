@@ -59,30 +59,32 @@ class _GridWidgetState extends State<GridWidget> {
     int width = widget.cat != null ? widget.cat!.width : widget.upload!.width;
     int height =
         widget.cat != null ? widget.cat!.height : widget.upload!.height;
-    return Column(
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: CachedNetworkImage(
-            imageUrl: url,
-            placeholder: (context, url) => AspectRatio(
-                aspectRatio: width / height,
-                child: Container(color: Colors.grey)),
-            errorWidget: (context, url, error) => AspectRatio(
-                aspectRatio: widget.cat!.width / widget.cat!.height,
-                child: Container(color: Colors.grey)),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: CachedNetworkImage(
+              imageUrl: url,
+              placeholder: (context, url) => AspectRatio(
+                  aspectRatio: width / height,
+                  child: Container(color: Colors.grey)),
+              errorWidget: (context, url, error) => AspectRatio(
+                  aspectRatio: widget.cat!.width / widget.cat!.height,
+                  child: Container(color: Colors.grey)),
+            ),
           ),
-        ),
-        widget.cat == null
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  GestureDetector(
-                      onTap: deleteSheet, child: const Icon(Icons.more_horiz))
-                ],
-              )
-            : const SizedBox.shrink()
-      ],
+          widget.cat == null
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    GestureDetector(
+                        onTap: deleteSheet, child: const Icon(Icons.more_horiz))
+                  ],
+                )
+              : const SizedBox.shrink()
+        ],
+      ),
     );
   }
 }

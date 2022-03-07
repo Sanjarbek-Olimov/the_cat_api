@@ -170,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                 isLoadPage
                     ? Center(
                         child: Lottie.asset("assets/lottie/loading.json",
-                            height: 50, width: 50),
+                            height: 100, width: 100),
                       )
                     : const SizedBox.shrink(),
               ],
