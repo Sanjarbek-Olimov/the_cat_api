@@ -16,6 +16,8 @@ class GridWidget extends StatefulWidget {
 }
 
 class _GridWidgetState extends State<GridWidget> {
+
+  // #delete_sheet
   void deleteSheet() {
     showModalBottomSheet(
         isScrollControlled: true,
