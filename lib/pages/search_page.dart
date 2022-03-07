@@ -76,6 +76,7 @@ class _SearchPageState extends State<SearchPage> {
         child: Container(
           margin:
               const EdgeInsets.only(top: 40, right: 10, left: 10, bottom: 10),
+
           // #search_text_field
           child: TextField(
             onSubmitted: (text) {
@@ -115,6 +116,8 @@ class _SearchPageState extends State<SearchPage> {
           : Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+
+                // #cats_image
                 Expanded(
                   child: MasonryGridView.count(
                       controller: _scrollController,

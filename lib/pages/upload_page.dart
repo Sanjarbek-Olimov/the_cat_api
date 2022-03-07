@@ -114,6 +114,8 @@ class _UploadPageState extends State<UploadPage> {
             const SizedBox(
               height: 5,
             ),
+
+            // #image_selector
             Container(
               height: 200,
               width: 200,
@@ -180,6 +182,8 @@ class _UploadPageState extends State<UploadPage> {
             const SizedBox(
               height: 5,
             ),
+
+            // #uploads_image
             Expanded(
               child: uploads.isNotEmpty
                   ? MasonryGridView.count(

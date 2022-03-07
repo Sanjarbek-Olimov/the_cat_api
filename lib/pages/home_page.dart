@@ -96,6 +96,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontSize: 17, color: Colors.white),
             )),
         actions: [
+          // #search_page
           IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, SearchPage.id);
@@ -105,6 +106,8 @@ class _HomePageState extends State<HomePage> {
                 size: 30,
                 color: Colors.black,
               )),
+
+          // #uploads_page
           IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, UploadPage.id);
@@ -123,6 +126,8 @@ class _HomePageState extends State<HomePage> {
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
+                // #cat_image
                 Expanded(
                     child: RefreshIndicator(
                   color: Colors.black,
