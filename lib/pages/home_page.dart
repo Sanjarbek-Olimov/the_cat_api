@@ -126,7 +126,6 @@ class _HomePageState extends State<HomePage> {
           : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 // #cat_image
                 Expanded(
                     child: RefreshIndicator(
@@ -170,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                 isLoadPage
                     ? Center(
                         child: Lottie.asset("assets/lottie/loading.json",
-                            height: 100, width: 100),
+                            height: 40, width: 100),
                       )
                     : const SizedBox.shrink(),
               ],

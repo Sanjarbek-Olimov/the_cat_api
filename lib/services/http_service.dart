@@ -40,13 +40,13 @@ class Network {
   }
 
   static Future<String?> MULTIPART(
-      String api, String filePath, Map<String, String> params) async {
+      String api, String filePath, Map<String, String> body) async {
     var uri = Uri.https(getServer(), api);
     var request = MultipartRequest('POST', uri);
     request.headers.addAll(getUploadHeaders());
     request.files.add(await MultipartFile.fromPath('file', filePath,
         contentType: MediaType("image", "jpeg")));
-    request.fields.addAll(params);
+    request.fields.addAll(body);
     StreamedResponse response = await request.send();
     if (response.statusCode == 200 || response.statusCode == 201) {
       return await response.stream.bytesToString();
@@ -74,9 +74,9 @@ class Network {
     return params;
   }
 
-  static Map<String, String> paramsUpload() {
-    Map<String, String> params = {'sub_id': ''};
-    return params;
+  static Map<String, String> bodyUpload() {
+    Map<String, String> body = {'sub_id': ''};
+    return body;
   }
 
   static Map<String, dynamic> paramsPage(int pageNumber) {

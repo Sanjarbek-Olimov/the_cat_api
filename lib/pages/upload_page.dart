@@ -55,7 +55,7 @@ class _UploadPageState extends State<UploadPage> {
       isUploading = true;
     });
     await Network.MULTIPART(
-            Network.API_UPLOAD, image.path, Network.paramsUpload())
+            Network.API_UPLOAD, image.path, Network.bodyUpload())
         .then((response) => {_showResponse(response)});
   }
 
